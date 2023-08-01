@@ -1,17 +1,18 @@
-// notes.js
 const express = require('express');
-// const { v4: uuidv4 } = require('uuid');
+const { v4: uuidv4 } = require('uuid');
 const fs = require('fs');
 const path = require('path');
-const { readFile, writeFile  } = require('../helpers/fsUtils');
+// const { readFile, writeFile  } = require('../helpers/fsUtils');
 
 const notes = express.Router(); // Create an instance of Express router
 
-const dbFilePath = path.join(__dirname, 'db/db.json');
+// const dbFilePath = path.join(__dirname, './db/db.json');
+const dbFilePath = path.join(__dirname, "../../../db/db.json");
 
 // POST Route for submitting a new note
 notes.post('/', (req, res) => {
   // Destructuring assignment for the items in req.body
+  console.log(req.body);
   const { title, text } = req.body;
 
   // Validate that both title and text are provided
@@ -122,6 +123,7 @@ notes.delete('/:id', (req, res) => {
     });
   });
 });
+
 
 module.exports = notes;
 
