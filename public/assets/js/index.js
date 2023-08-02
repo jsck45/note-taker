@@ -170,6 +170,8 @@ const renderNoteList = async (notes) => {
   }
 };
 
+const getAndRenderNotes = () => getNotes().then(renderNoteList);
+
 if (window.location.pathname === '/notes.html') {
   saveNoteBtn.addEventListener('click', handleNoteSave);
   newNoteBtn.addEventListener('click', handleNewNoteView);
