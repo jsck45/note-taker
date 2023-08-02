@@ -26,7 +26,7 @@ const hide = (elem) => {
 let activeNote = {};
 
 const getNotes = () =>
-  fetch('https://pure-escarpment-08638-06cf99d4282b.herokuapp.com/', {
+  fetch('https://pure-escarpment-08638-06cf99d4282b.herokuapp.com/api/notes', {
     method: 'GET',
     headers: {
       'Content-Type': 'application/json',
@@ -34,7 +34,7 @@ const getNotes = () =>
   });
 
 const saveNote = (note) =>
-  fetch('https://pure-escarpment-08638-06cf99d4282b.herokuapp.com/', {
+  fetch('https://pure-escarpment-08638-06cf99d4282b.herokuapp.com/api/notes', {
     method: 'POST',
     headers: {
       'Content-Type': 'application/json',
@@ -43,7 +43,7 @@ const saveNote = (note) =>
   });
 
 const deleteNote = (id) =>
-  fetch(`https://pure-escarpment-08638-06cf99d4282b.herokuapp.com/${id}`, {
+  fetch(`https://pure-escarpment-08638-06cf99d4282b.herokuapp.com/api/notes/${id}`, {
     method: 'DELETE',
     headers: {
       'Content-Type': 'application/json',
