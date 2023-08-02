@@ -26,7 +26,7 @@ const hide = (elem) => {
 let activeNote = {};
 
 const getNotes = () =>
-  fetch('http://localhost:3001/api/notes', {
+  fetch('https://pure-escarpment-08638-06cf99d4282b.herokuapp.com/', {
     method: 'GET',
     headers: {
       'Content-Type': 'application/json',
@@ -34,7 +34,7 @@ const getNotes = () =>
   });
 
 const saveNote = (note) =>
-  fetch('http://localhost:3001/api/notes', {
+  fetch('https://pure-escarpment-08638-06cf99d4282b.herokuapp.com/', {
     method: 'POST',
     headers: {
       'Content-Type': 'application/json',
@@ -42,14 +42,13 @@ const saveNote = (note) =>
     body: JSON.stringify(note),
   });
 
-  const deleteNote = (id) =>
-  fetch(`http://localhost:3001/api/notes/${id}`, { 
+const deleteNote = (id) =>
+  fetch(`https://pure-escarpment-08638-06cf99d4282b.herokuapp.com/${id}`, {
     method: 'DELETE',
     headers: {
       'Content-Type': 'application/json',
     },
   });
-
 
 const renderActiveNote = () => {
   hide(saveNoteBtn);
@@ -103,7 +102,7 @@ const handleNoteView = (e) => {
   renderActiveNote();
 };
 
-// Sets the activeNote to and empty object and allows the user to enter a new note
+// Sets the activeNote to an empty object and allows the user to enter a new note
 const handleNewNoteView = (e) => {
   activeNote = {};
   renderActiveNote();
@@ -171,11 +170,7 @@ const renderNoteList = async (notes) => {
   }
 };
 
-// Gets notes from the db and renders them to the sidebar
-const getAndRenderNotes = () => getNotes().then(renderNoteList);
-
 if (window.location.pathname === '/notes.html') {
-  
   saveNoteBtn.addEventListener('click', handleNoteSave);
   newNoteBtn.addEventListener('click', handleNewNoteView);
   noteTitle.addEventListener('keyup', handleRenderSaveBtn);
